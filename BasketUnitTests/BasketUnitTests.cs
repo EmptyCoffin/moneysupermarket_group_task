@@ -29,7 +29,7 @@ namespace BasketUnitTests
             // arrange
             var basket = new Basket 
             {
-                Products = Enumerable.Empty<IProduct>().ToArray() 
+                Products = Enumerable.Empty<ProductBase>().ToArray() 
             };
 
             // act
@@ -45,7 +45,7 @@ namespace BasketUnitTests
             // arrange
             var basket = new Basket 
             {
-                Products = new List<IProduct>
+                Products = new List<ProductBase>
                 {
                     new TestProduct1(),
                     new TestProduct2()

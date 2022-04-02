@@ -2,8 +2,8 @@ using BasketProject.Products;
 
 namespace BasketUnitTests.TestProducts
 {
-    public class TestProduct1 : IProduct
+    public class TestProduct1 : ProductBase
     {
-        public double Price => 3.50;
+        public override double OriginalPrice => 3.50;
     }
 }

@@ -6,7 +6,7 @@ namespace BasketProject
 {
     public class Basket
     {
-        public IEnumerable<IProduct> Products {get;set;}
+        public IEnumerable<ProductBase> Products {get;set;}
 
         public string GetTotalPrice()
         {
