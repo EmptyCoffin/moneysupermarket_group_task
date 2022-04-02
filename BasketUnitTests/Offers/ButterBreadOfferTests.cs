@@ -9,11 +9,24 @@ namespace BasketUnitTests.Offers
     [TestClass]
     public class ButterBreadOfferTests
     {
+        private ButterBreadOffer _offer;
+
+        [TestInitialize]
+        public void Initialise()
+        {
+            _offer = new ButterBreadOffer();
+        }
+
+        [TestCleanup]
+        public void CleanUp()
+        {
+            _offer = null;
+        }
+
         [TestMethod]
         public void CheckOffer_GivenOfferInvalid_ShouldNotAddDiscount()
         {
             // arrange
-            var offer = new ButterBreadOffer();
             var products = new List<ProductBase>()
             {
                 new ButterProduct(),
@@ -21,7 +34,7 @@ namespace BasketUnitTests.Offers
             };
 
             // act
-            offer.CheckOffer(products);
+            _offer.CheckOffer(products);
 
             // assert
             Assert.IsTrue(products.All(a => !a.Dicount.HasValue));
@@ -31,7 +44,6 @@ namespace BasketUnitTests.Offers
         public void CheckOffer_GivenOfferValid_ShouldAddDiscount()
         {
             // arrange
-            var offer = new ButterBreadOffer();
             var products = new List<ProductBase>()
             {
                 new ButterProduct(),
@@ -40,7 +52,7 @@ namespace BasketUnitTests.Offers
             };
 
             // act
-            offer.CheckOffer(products);
+            _offer.CheckOffer(products);
 
             // assert
             Assert.IsFalse(products.All(a => !a.Dicount.HasValue));
@@ -53,7 +65,6 @@ namespace BasketUnitTests.Offers
         public void CheckOffer_GivenMultipleOfferValid_ShouldAddDiscountOnce()
         {
             // arrange
-            var offer = new ButterBreadOffer();
             var products = new List<ProductBase>()
             {
                 new ButterProduct(),
@@ -64,7 +75,7 @@ namespace BasketUnitTests.Offers
             };
 
             // act
-            offer.CheckOffer(products);
+            _offer.CheckOffer(products);
 
             // assert
             Assert.IsFalse(products.All(a => !a.Dicount.HasValue));
@@ -78,7 +89,6 @@ namespace BasketUnitTests.Offers
         public void CheckOffer_GivenMultipleOfferValidAndProducts_ShouldAddDiscountTwice()
         {
             // arrange
-            var offer = new ButterBreadOffer();
             var products = new List<ProductBase>()
             {
                 new ButterProduct(),
@@ -91,7 +101,7 @@ namespace BasketUnitTests.Offers
             };
 
             // act
-            offer.CheckOffer(products);
+            _offer.CheckOffer(products);
 
             // assert
             Assert.IsFalse(products.All(a => !a.Dicount.HasValue));
