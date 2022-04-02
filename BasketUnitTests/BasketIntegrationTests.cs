@@ -2,8 +2,6 @@ using BasketProject;
 using BasketProject.Offers;
 using BasketProject.Products;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace BasketUnitTests
 {
