@@ -1,4 +1,5 @@
-﻿using BasketProject.Products;
+﻿using BasketProject.Offers;
+using BasketProject.Products;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,14 +11,18 @@ namespace BasketProject
 
         public string GetTotalPrice()
         {
-            double price = 0;
+            decimal price = 0;
 
             if (Products != null && Products.Any()) 
             {
+                foreach(var offer in OffersSingleton.Instance.CurrentOffers)
+                {
+                    offer.CheckOffer(Products);
+                }
                 price =  Products.Sum(s => s.Price);
             }
 
-            return $"£{price}";
+            return price.ToString("C2");
         }
     }
 }

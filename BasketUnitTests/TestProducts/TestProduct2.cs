@@ -4,6 +4,6 @@ namespace BasketUnitTests.TestProducts
 {
     public class TestProduct2 : ProductBase
     {
-        public override double OriginalPrice => 1.45;
+        public override decimal OriginalPrice => 1.45M;
     }
 }

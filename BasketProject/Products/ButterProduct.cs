@@ -2,6 +2,6 @@ namespace BasketProject.Products
 {
     public class ButterProduct : ProductBase
     {
-        public override double OriginalPrice => 0.80;
+        public override decimal OriginalPrice => 0.80M;
     }
 }

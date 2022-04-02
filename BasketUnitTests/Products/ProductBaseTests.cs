@@ -28,14 +28,14 @@ namespace BasketUnitTests.Products
             // arrange
             var product = new TestProduct1
             {
-                Dicount = discount
+                Dicount = (decimal)discount
             };
 
             // act
             var result = product.Price;
 
             // assert
-            Assert.AreEqual(expectedValue, result);
+            Assert.AreEqual((decimal)expectedValue, result);
         }
     }
 }
