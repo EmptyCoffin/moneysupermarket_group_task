@@ -7,7 +7,13 @@ namespace BasketProject
 {
     public class Basket
     {
+        private IOfferService _offerService;
         public IEnumerable<ProductBase> Products {get;set;}
+        
+        public Basket(IOfferService offerService)
+        {
+            _offerService = offerService;
+        }
 
         public string GetTotalPrice()
         {
@@ -15,7 +21,7 @@ namespace BasketProject
 
             if (Products != null && Products.Any()) 
             {
-                foreach(var offer in OffersSingleton.Instance.CurrentOffers)
+                foreach(var offer in _offerService.GetCurrentOffers())
                 {
                     offer.CheckOffer(Products);
                 }

@@ -145,3 +145,8 @@ BasketUnitTests/obj/Debug/net5.0/BasketUnitTests.GeneratedMSBuildEditorConfig.ed
 BasketUnitTests/obj/Debug/net5.0/BasketUnitTests.genruntimeconfig.cache
 BasketUnitTests/obj/Debug/net5.0/BasketUnitTests.pdb
 BasketUnitTests/obj/Debug/net5.0/ref/BasketUnitTests.dll
+BasketUnitTests/BasketUnitTests.cs
+BasketUnitTests/bin/Debug/net5.0/Castle.Core.dll
+BasketUnitTests/bin/Debug/net5.0/Moq.dll
+BasketUnitTests/bin/Debug/net5.0/System.Diagnostics.EventLog.dll
+BasketUnitTests/bin/Debug/net5.0/runtimes/win/lib/netcoreapp2.0/System.Diagnostics.EventLog.dll

@@ -8,33 +8,34 @@ namespace BasketUnitTests
     [TestClass]
     public class BasketIntegrationTests
     {
+        private Basket _basket;
+
         [TestInitialize]
         public void Initialise() 
         {
-            OffersSingleton.Instance.CurrentOffers.AddRange(new OfferBase[] { new ButterBreadOffer(), new MilkOffer() });
+            var currentOffersService = new OffersService();
+            currentOffersService.AddOffers(new OfferBase[] { new ButterBreadOffer(), new MilkOffer() });
+            _basket = new Basket(currentOffersService);
         }
 
         [TestCleanup]
         public void CleanUp() 
         {
-            OffersSingleton.Instance.CurrentOffers.Clear();
+            _basket = null;
         }
 
         [TestMethod]
         public void Test_Scenario_1() 
         {
             // arrange
-            var basket = new Basket
-            {
-                Products = new ProductBase[]{
+            _basket.Products = new ProductBase[]{
                     new BreadProduct(),
                     new ButterProduct(),
                     new MilkProduct()
-                }
-            };
+                };
 
             // act
-            var result = basket.GetTotalPrice();
+            var result = _basket.GetTotalPrice();
 
             // assert
             Assert.AreEqual("£2.95", result);
@@ -44,18 +45,15 @@ namespace BasketUnitTests
         public void Test_Scenario_2() 
         {
             // arrange
-            var basket = new Basket
-            {
-                Products = new ProductBase[]{
+            _basket.Products = new ProductBase[]{
                     new MilkProduct(),
                     new MilkProduct(),
                     new MilkProduct(),
                     new MilkProduct()
-                }
-            };
+                };
 
             // act
-            var result = basket.GetTotalPrice();
+            var result = _basket.GetTotalPrice();
 
             // assert
             Assert.AreEqual("£3.45", result);
@@ -65,9 +63,7 @@ namespace BasketUnitTests
         public void Test_Scenario_3() 
         {
             // arrange
-            var basket = new Basket
-            {
-                Products = new ProductBase[]{
+            _basket.Products = new ProductBase[]{
                     new BreadProduct(),
                     new ButterProduct(),
                     new ButterProduct(),
@@ -79,11 +75,10 @@ namespace BasketUnitTests
                     new MilkProduct(),
                     new MilkProduct(),
                     new MilkProduct()
-                }
-            };
+                };
 
             // act
-            var result = basket.GetTotalPrice();
+            var result = _basket.GetTotalPrice();
 
             // assert
             Assert.AreEqual("£9.00", result);
